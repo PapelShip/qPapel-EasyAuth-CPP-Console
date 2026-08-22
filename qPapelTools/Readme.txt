@@ -1,0 +1,1 @@
+You need to upload the qPapelEasyAuth.dll file here; you can download this file from https://papelship.com/dashboard/downloads 
