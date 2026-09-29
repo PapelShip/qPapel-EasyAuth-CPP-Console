@@ -175,6 +175,7 @@ extern "C" {
     void   QP_SetCustomHwid(QPCTX ctx, const char* custom_hwid);
     void   QP_SetCustomHwidCallback(QPCTX ctx, const char* (*cb)());
     void   QP_DisableWatchdog(QPCTX ctx);
+    int    QP_SetDevEndpoint(QPCTX ctx, const char* host, unsigned short port, const char* dev_code);
     int    QP_Connect(QPCTX ctx);
     char* QP_InitSession(QPCTX ctx, const char* api_key);
     char* QP_Authenticate(QPCTX ctx, const char* key, const char* api_key);
@@ -362,6 +363,7 @@ namespace easyauth {
     EASYAUTH_API bool network_test_expired_timestamp(uint32_t seconds_in_past = 120);
     EASYAUTH_API bool network_is_connected();
     EASYAUTH_API void network_disconnect();
+    EASYAUTH_API bool network_set_dev_endpoint(const std::string& host, uint16_t port, const std::string& dev_code);
 
     EASYAUTH_API void start_background_watchdog(uint32_t interval_ms = 500);
     EASYAUTH_API void stop_background_watchdog();
@@ -487,7 +489,7 @@ namespace easyauth {
         server_response send_plugin_custom_request(const std::string& action, const std::string& payload_json = "{}");
         
     } // namespace plugins
-
+    
 } // namespace easyauth
 
 namespace qPapelEasyAuth = easyauth;
